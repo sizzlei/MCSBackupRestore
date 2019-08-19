@@ -1,9 +1,12 @@
 # MCSBackupRestore
+## Description
 기존 ColumnstoreBackup Tool을 참고하여 작성된 스크립트로 네트워크를 통해 실행하긴 하지만 백업 파일이 각 모듈에 저장되어 복구시에도 각 모듈에서 개별적으로 복구됩니다. 
 
 이는 서버의 네트워크 상황을 개선하기 어렵고 서버내 스토리지의 여유가 있는 경우에 사용하기 위하여 작성되었으며, 아래의 서버 구성에서 개발되고 테스트 되었으므로 적용하기 위해서는 많은 테스트가 필요합니다. 
 
 > 2ea Server / Combined / Data Redundancy
+
+기존 Columnstore Tool 과 마찬가지로 Innodb 사용으로 인한 백업 및 복구 오류에 대해 보장한다고는 할수 없으나 백업이전에 Global Read Lock을 진행함으로써 어느정도 InnoDB데이터에 대한 복구는 가능할 것으로 보입니다.
 
 
 ## Backup
