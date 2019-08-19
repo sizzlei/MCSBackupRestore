@@ -8,6 +8,21 @@
 
 기존 Columnstore Tool 과 마찬가지로 Innodb 사용으로 인한 백업 및 복구 오류에 대해 보장한다고는 할수 없으나 백업이전에 Global Read Lock을 진행함으로써 어느정도 InnoDB데이터에 대한 복구는 가능할 것으로 보입니다.
 
+## Import Module
+해당 스크립트는 아래와 같은 모듈을 사용합니다. 
+<pre>
+<code>
+import paramiko
+import os
+import logzero
+from logzero import logger
+from datetime import date,datetime
+import threading
+import time
+from dateutil.relativedelta import *
+import mysql.connector
+</code>
+</pre>
 
 ## Backup
 ### Configure
