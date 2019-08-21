@@ -19,11 +19,36 @@ from logzero import logger
 from datetime import date,datetime
 import threading
 import time
-from dateutil.relativedelta import *
+from dateutil.relativedelta import relativedelta
 import mysql.connector
 </code>
 </pre>
+# V4.0
+> 4.0 스크립트는 InnoDB Data Backup시 mariabackup툴을 사용함으로써 더 안전하게 Innodb 데이터를 백업하고 복구합니다. 
+## MCSBackup
++ InnoDB Data Backup이 rsync에서 mariabackup으로 변경되었습니다. 
++ InnoDB Data Backup은 OAM에서만 작동합니다. 
++ Backup configure에서 LOCKUSER/PASS , MCSUSER/PASS 는 BACKUSER/PASS 로 대체됩니다.
+  + BACKUSER / PASS 는 mariabackup을 사용하는 계정 정보입니다.
++ dateutil.relativedelta 모듈의 모든 메소드가 아닌 relativedelta 메소드만 Import 합니다.
++ flush tables with read lock 명령이 제거되었습니다. 
 
+## MCSRestore
++ from dateutil.relativedelta import * 가 미사용으로 인하여 제거되었습니다.
++ Restore시 InnoDB Data File은 OAM을 제외한 모듈로 이관하며 이때 각서버는 PASSWORD없이 연결되어야합니다.(SSH-KEY)
++ Backup Path 와 Install Path에 대한 체크 코드가 추가 되었습니다. 
++ InnoDB Data Restore 시 mariabackup --copy-back을 사용합니다. 
++ Restore 완료 이후 Replication 관련 명령이 추가되었습니다.(표기만)
+<pre>
+<code>
+[190821 13:46:52] [INFO]  Replication Set : CHANGE MASTER TO MASTER_HOST='172.16.30.100',MASTER_PORT=3306,MASTER_LOG_FILE='mysql-bin.000001',MASTER_LOG_POS=328,MASTER_USER='idbrep',MASTER_PASSWORD='Calpont1';
+[190821 13:46:52] [INFO]  Replication Start : start slave;
+</code>
+</pre>
+모든 Binary log 가 삭제되고 재생성 됨으로 초기 연결 Binary File과 Position은 고정값입니다. 
+
+
+# V3.0
 ## Backup
 ### Configure
 <pre>
