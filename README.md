@@ -41,7 +41,7 @@ import mysql.connector
 + Restore 완료 이후 Replication 관련 명령이 추가되었습니다.(표기만)
 <pre>
 <code>
-[190821 13:46:52] [INFO]  Replication Set : CHANGE MASTER TO MASTER_HOST='172.16.30.100',MASTER_PORT=3306,MASTER_LOG_FILE='mysql-bin.000001',MASTER_LOG_POS=328,MASTER_USER='idbrep',MASTER_PASSWORD='Calpont1';
+[190821 13:46:52] [INFO]  Replication Set : CHANGE MASTER TO MASTER_HOST='',MASTER_PORT=3306,MASTER_LOG_FILE='mysql-bin.000001',MASTER_LOG_POS=328,MASTER_USER='idbrep',MASTER_PASSWORD='Calpont1';
 [190821 13:46:52] [INFO]  Replication Start : start slave;
 </code>
 </pre>
