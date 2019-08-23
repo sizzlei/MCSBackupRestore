@@ -163,15 +163,15 @@ try:
                 ###############################################################################
                 # Configure Recovery
                 ###############################################################################
-                _mvColCon = """%s/etc/Columnstore.xml %s/etc/Columnstore.xml_back_%s""" % (INSTALLPATH,INSTALLPATH,BACKDAY)
+                _mvColCon = """mv %s/etc/Columnstore.xml %s/etc/Columnstore.xml_back_%s""" % (INSTALLPATH,INSTALLPATH,BACKDAY)
                 ssh_svr.exec_command(_mvColCon)
-                _cpColCon = """%s/Columnstore.xml %s/etc/Columnstore.xml""" % (BACKUPPATH,INSTALLPATH)
+                _cpColCon = """cp %s/Columnstore.xml %s/etc/Columnstore.xml""" % (BACKUPPATH,INSTALLPATH)
                 ssh_svr.exec_command(_cpColCon)
                 logger.info(_svrinfo['module'] + " ColumnStore Configure Backup AND Recovery.")
 
-                _mvMyCon = """%s/mysql/my.cnf %s/mysql/my.cnf_back_%s""" % (INSTALLPATH,INSTALLPATH,BACKDAY)
+                _mvMyCon = """mv %s/mysql/my.cnf %s/mysql/my.cnf_back_%s""" % (INSTALLPATH,INSTALLPATH,BACKDAY)
                 ssh_svr.exec_command(_mvMyCon)
-                _cpMyCon = """%s/my.cnf %s/mysql/my.cnf""" % (BACKUPPATH,INSTALLPATH)
+                _cpMyCon = """cp %s/my.cnf %s/mysql/my.cnf""" % (BACKUPPATH,INSTALLPATH)
                 ssh_svr.exec_command(_cpMyCon)
                 logger.info(_svrinfo['module'] + " MySQLD Configure Backup AND Recovery.")
 
