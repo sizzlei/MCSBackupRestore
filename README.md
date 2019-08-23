@@ -25,7 +25,8 @@ import mysql.connector
 </pre>
 # V4.0
 > 4.0 스크립트는 InnoDB Data Backup시 mariabackup툴을 사용함으로써 더 안전하게 Innodb 데이터를 백업하고 복구합니다.
-> Combined 모드만 지원합니다.
+
++ Combined 모드만 지원합니다.
 ## MCSBackup
 + InnoDB Data Backup이 rsync에서 mariabackup으로 변경되었습니다. 
 + InnoDB Data Backup은 OAM에서만 작동합니다. 
